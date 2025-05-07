@@ -1,5 +1,13 @@
 import random
 
+def generate_distance_matrix(n, max_distance=20):
+    matrix = [[0 if i == j else random.randint(1, max_distance) for j in range(n)] for i in range(n)]
+    return matrix
+
+def print_matrix(matrix):
+    for row in matrix:
+        print(row)
+
 def cheapest_insertion(distance_matrix):
     n = len(distance_matrix)
     unvisited = set(range(n))
@@ -43,11 +51,11 @@ def cheapest_insertion(distance_matrix):
 
     return tour, total_distance
 
-distance_matrix = [
-    [0, 2, 9, 10],
-    [1, 0, 6, 4],
-    [15, 7, 0, 8],
-    [6, 3, 12, 0]
-]
+num_cities = int(input("Quantas cidades? "))
+distance_matrix = generate_distance_matrix(num_cities)
+
+print("\nMatriz de distâncias:")
+print_matrix(distance_matrix)
+print()
 
 cheapest_insertion(distance_matrix)
