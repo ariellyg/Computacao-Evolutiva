@@ -1,0 +1,5 @@
+Além de implementar o código, devem fazer testes mudando os parâmetros POPULATION_SIZE e MUTATION_RATE, até ter um resultado mais rápido e eficiente. Responder a seguinte pergunta:
+
+Quando melhora/piora o desempenho do algoritmo na mudança dos parâmetros indicados?
+
+O desempenho do algoritmo melhora quando POPULATION_SIZE é aumentado, pois amplia a diversidade genética e evita convergência prematura. Com MUTATION_RATE em 0.1, há mais variação nos indivíduos, o que ajuda a escapar de soluções ruins. Esses ajustes tornaram o algoritmo mais rápido e consistente na busca pela solução ótima. Já valores muito baixos desses parâmetros reduzem a diversidade e dificultam a evolução da população o que leva a soluções ruins. No entanto, por se tratar de um algoritmo baseado em aleatoriedade, os resultados podem variar entre execuções. Por isso, é importante repetir os testes várias vezes para avaliar o desempenho médio e a consistência do algoritmo.
