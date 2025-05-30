@@ -33,8 +33,31 @@ def select_parent(population):
     return candidates[0]
 
 def crossover(parent1, parent2):
-    crossover_point = random.randint(0, N - 1)
-    child_genes = parent1[0][:crossover_point] + parent2[0][crossover_point:]
+    num_points = 3  # Número fixo de pontos de corte
+    # Garante que num_points não seja maior que N - 1
+    num_points = min(num_points, N - 1)
+    # Gera os pontos de corte e ordena
+    cut_points = sorted(random.sample(range(1, N), num_points))
+
+    #print(f'Pontos de corte: {cut_points}')
+    #print(f'Parent1: {parent1[0]}')
+    #print(f'Parent2: {parent2[0]}')
+
+    child_genes = []
+    last_cut = 0
+    from_parent1 = True 
+
+    for cut in cut_points + [N]:
+        if from_parent1:
+            segment = parent1[0][last_cut:cut]
+        else:
+            segment = parent2[0][last_cut:cut]
+        child_genes.extend(segment)
+        from_parent1 = not from_parent1  # alterna
+        last_cut = cut
+
+    #print(f'Child:   {child_genes}\n')
+
     return (child_genes, evaluate_fitness(child_genes))
 
 def mutate(individual):
